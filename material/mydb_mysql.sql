@@ -16,6 +16,14 @@
 CREATE DATABASE IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `mydb`;
 
+-- Dumping structure for procedure mydb.GetJournal
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetJournal`(IN intype VARCHAR(1) )
+BEGIN
+	SELECT journalid,journalname,amount FROM tjournal WHERE journaltype = intype;
+END//
+DELIMITER ;
+
 -- Dumping structure for table mydb.tjournal
 CREATE TABLE IF NOT EXISTS `tjournal` (
   `journalid` varchar(50) NOT NULL COMMENT 'UUID',
